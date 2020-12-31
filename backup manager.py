@@ -1,6 +1,5 @@
 from os import system, path
 from time import sleep
-print(len("Microsoft\\Windows\\Start Menu\\Programs\\Startup"))
 # Incluir el instalador en el menu de inicio
 def cmd(c):
 	_ = system(c)
