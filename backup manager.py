@@ -29,6 +29,7 @@ while True:
 					'?' not in bname ):
 					backed += USB
 					print('SAVING...',end='')
+					sleep(0.1)
 					cmd('rmdir /S /Q "%HOMEDRIVE%%HOMEPATH%/USB-backup/'+bname+'" >> %HOMEDRIVE%%HOMEPATH%/USB-backup/log.txt')
 					cmd('xcopy "'+USB+':/" "%HOMEDRIVE%%HOMEPATH%/USB-backup/'+bname+'" /S /E /I /EXCLUDE:'+USB+':\\.USBignore >> %HOMEDRIVE%%HOMEPATH%/USB-backup/log.txt')
 				else:
