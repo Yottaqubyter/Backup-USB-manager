@@ -1,57 +1,48 @@
 from os import system, path
 from time import sleep
-print(len("Microsoft\\Windows\\Start Menu\\Programs\\Startup"))
 # Incluir el instalador en el menu de inicio
 def cmd(c):
 	_ = system(c)
-if path.dirname(__file__)[-45:]!="Microsoft\\Windows\\Start Menu\\Programs\\Startup":
-	# Instalacion (copio con cmd(), el exe en startup) y lo ejecuto
-	cmd('copy /Y "' + __file__ + '" "%APPDATA%\\Microsoft\\Windows\\Start Menu\\Programs\\Startup"')
-	cmd("mkdir %HOMEDRIVE%%HOMEPATH%\\USB-backup\\")
-	cmd("cd %APPDATA%\\Microsoft\\Windows\\Start Menu\\Programs\\Startup\\ & start python \""+path.basename(__file__)+'"')
-else: # Si ya esta instalado, actua normal
-#	cmd('del /Q "%HOMEDRIVE%%HOMEPATH%/USB-backup/log.txt"')
-	alphabet = [chr(ord('A')+i) for i in range(26)]
-	backed = []
-	while True:
-		cmd("cls")
-		print("Scanning: ")
-		for USB in alphabet:
-			print('	'+USB+': [',end='')
-			try:
-				file = open(USB+":/USBack.txt")
-				_ = open(USB+":/.USBignore")
-				_.close()
-				bname = file.read()
-				file.close()
-				if not USB in backed:
-					if ('"' not in bname and
-						'\\' not in bname and
-						'\n' not in bname and
-						'/' not in bname and
-						':' not in bname and
-						'*' not in bname and
-						'>' not in bname and
-						'<' not in bname and
-						'|' not in bname and
-						'?' not in bname ):
-						backed += USB
-						print('SAVING...',end='')
-						cmd('rmdir /S /Q "%HOMEDRIVE%%HOMEPATH%/USB-backup/'+bname+'" >> %HOMEDRIVE%%HOMEPATH%/USB-backup/log.txt')
-						cmd('xcopy "'+USB+':/" "%HOMEDRIVE%%HOMEPATH%/USB-backup/'+bname+'" /S /E /I /EXCLUDE:'+USB+':\\.USBignore >> %HOMEDRIVE%%HOMEPATH%/USB-backup/log.txt')
-					else:
-						print('INVALID BACKUP NAME',end='')
+alphabet = [chr(ord('A')+i) for i in range(26)]
+backed = []
+while True:
+	cmd("cls")
+	print("Scanning: ")
+	for USB in alphabet:
+		print('	'+USB+': [',end='')
+		try:
+			file = open(USB+":/USBack.txt")
+			_ = open(USB+":/.USBignore")
+			_.close()
+			bname = file.read()
+			file.close()
+			if not USB in backed:
+				if ('"' not in bname and
+					'\\' not in bname and
+					'\n' not in bname and
+					'/' not in bname and
+					':' not in bname and
+					'*' not in bname and
+					'>' not in bname and
+					'<' not in bname and
+					'|' not in bname and
+					'?' not in bname ):
+					backed += USB
+					print('SAVING...',end='')
+					cmd('rmdir /S /Q "%HOMEDRIVE%%HOMEPATH%/USB-backup/'+bname+'" >> %HOMEDRIVE%%HOMEPATH%/USB-backup/log.txt')
+					cmd('xcopy "'+USB+':/" "%HOMEDRIVE%%HOMEPATH%/USB-backup/'+bname+'" /S /E /I /EXCLUDE:'+USB+':\\.USBignore >> %HOMEDRIVE%%HOMEPATH%/USB-backup/log.txt')
 				else:
-					print('BACKED UP',end='')
-
-					# cmd("start copyscript.bat "+USB+" "+bname)
-			except OSError:
-				bname=""
-				if USB in backed:
-					backed.remove(USB)
-					print('EXTRACTED',end='')
-				else:
-					print('NOT FOUND',end='')
-			finally:
-				print(']'+'\t'+('Name: ')*(len(bname)>0)+bname)
-		sleep(5)
+					print('INVALID BACKUP NAME',end='')
+			else:
+				print('BACKED UP',end='')
+				# cmd("start copyscript.bat "+USB+" "+bname)
+		except OSError:
+			bname=""
+			if USB in backed:
+				backed.remove(USB)
+				print('EXTRACTED',end='')
+			else:
+				print('NOT FOUND',end='')
+		finally:
+			print(']'+'\t'+('Name: ')*(len(bname)>0)+bname)
+	sleep(5)
