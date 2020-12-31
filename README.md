@@ -14,10 +14,10 @@ Debes crear un archivo de texto en el USB llamado `USBackup.txt`. Debes escribir
 
 ### .USBignore
 
-También debes crear un archivo de nombre `.USBignore`. En el archivo incluirás una lista de archivos o directorios que ignorar. Aquí incluyo como ejemplo un `.USBignore` que se ignora a si mismo, a USBackup.txt y a una carpeta de la versión portable de codeblocks:
+También debes crear un archivo de nombre `.USBignore`. En el archivo incluirás una lista de archivos o directorios que ignorar. Aquí incluyo como ejemplo un `.USBignore` que se ignora a si mismo, a USBackup.txt y a una carpeta llamada `foo`:
 
 ```
-\codeblocks-16.01mingw-nosetup\
+\foo\
 \USBack.txt
 \.USBignore
 ```
@@ -35,4 +35,3 @@ Esta parte del programa no comprueba si hay errores, así que hay que tener cuid
 Al iniciar el programa, este se instalara en tu ordenador para iniciarse al encender el ordenador. Habrá una ventana abierta que te informa de los USB que ha detectado para hacer una copia de seguridad.
 
 <img src="BACK_SUCCESSFUL.PNG" alt="a" style="zoom:60%;" />
-
