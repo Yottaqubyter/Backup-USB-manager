@@ -17,16 +17,17 @@ while True:
 			bname = file.read()
 			file.close()
 			if not USB in backed:
-				if ('"' not in bname and
+				if ('"'  not in bname and
 					'\\' not in bname and
 					'\n' not in bname and
-					'/' not in bname and
-					':' not in bname and
-					'*' not in bname and
-					'>' not in bname and
-					'<' not in bname and
-					'|' not in bname and
-					'?' not in bname ):
+					'/'  not in bname and
+					':'  not in bname and
+					'*'  not in bname and
+					'>'  not in bname and
+					'<'  not in bname and
+					'|'  not in bname and
+					'?'  not in bname and
+					len( bname ) != 0 ):
 					backed += USB
 					print('SAVING...',end='')
 					sleep(0.1)
