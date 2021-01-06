@@ -32,6 +32,7 @@ Esta parte del programa no comprueba si hay errores, así que hay que tener cuid
 
 ## Inicio del programa
 
-Al iniciar el programa, este se instalara en tu ordenador para iniciarse al encender el ordenador. Habrá una ventana abierta que te informa de los USB que ha detectado para hacer una copia de seguridad.
+Al iniciar el programa, este se instalara en tu ordenador para iniciarse al encender el ordenador. Habrá una ventana abierta que te informa de los USB que ha detectado para hacer una copia de seguridad. Si quieres pausar el proceso de detección y de guardado de las copias de seguridad,
+puedes hacerlo pulsando `Ctrl+C`
 
 <img src="BACK_SUCCESSFUL.PNG" alt="a" style="zoom:60%;" />
